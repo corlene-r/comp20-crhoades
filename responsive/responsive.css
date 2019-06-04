@@ -1,0 +1,127 @@
+@media only screen and (min-width: 1201px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 2px 0px;
+	}
+
+}
+
+@media only screen and (max-width: 1200px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 512px 0px;
+	}
+
+	p{
+		color: red;
+	}
+}
+
+@media only screen and (max-width: 1100px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 385px 0px;
+	}
+
+	p{
+		color: pink;
+	}
+
+}
+
+@media only screen and (max-width: 1000px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 258px 0px;
+	}
+
+	p{
+		color: purple;
+	}
+}
+
+@media only screen and (max-width: 900px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 130px 0px;
+	}
+
+	p{
+		color: teal;
+	}
+}
+
+@media only screen and (max-width: 800px){
+	.software{
+		width: 128px; height: 239px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 2px -241px;
+	}
+
+	p{
+		color: black;
+	}
+}
+
+@media only screen and (max-width: 700px){
+	.software{
+		width: 128px; height: 241px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 511px -241px;
+	}
+
+	p{
+		color: lightblue;
+	}
+}
+
+@media only screen and (max-width: 600px){
+	.software{
+		width: 128px; height: 239px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 385px -241px;
+	}
+
+	p{
+		color: gold;
+	}
+}
+
+@media only screen and (max-width: 500px){
+	.software{
+		width: 128px; height: 239px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 258px -241px;
+	}
+
+	p{
+		color: purple;
+	}
+}
+
+@media only screen and (max-width: 400px){
+	.software{
+		width: 128px; height: 239px;
+		display: inline-block;
+		background: url(software.png);
+		background-position: 130px -241px;
+	}
+
+	p{
+		color: yellow;
+	}
+}
