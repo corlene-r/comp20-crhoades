@@ -1,3 +1,25 @@
+body{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	background-color: #494949;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	font-size: 30px;
+	padding: 10px;
+}
+
 p{
-	color: red;
+	color: lightgray;
+	text-align: center;
+	font-size: 16px;
+	padding: 8px;
+}
+
+video{
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	width: 500px;
 }
