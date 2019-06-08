@@ -11,7 +11,7 @@
       var jsonObjs = JSON.parse(jsonData);
       messages = document.getElementById("messages");
       for(let elm of jsonObjs){
-        messages.innerHTML = "<p>" + elm.content + " USER: " + elm.username + "</p>";
+        messages.innerHTML += "<p>" + elm.content + " USER: " + elm.username + "</p>";
       }
 
     }
