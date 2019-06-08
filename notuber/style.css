@@ -1,4 +1,10 @@
-p{
-	color: white;
-	size: 800px; /*this is stupid and i kno*/
+#map {
+	height: 100%;
+	width: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
