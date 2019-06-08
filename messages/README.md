@@ -1,6 +1,7 @@
 # GITHUB: corlene-r
 #
-# I'm about to start working on this so the readme will be better at the end i promise uwu
-# owo
+# WORKING PARTS: So I think I implemented it all correctly if the capital "USER: [username]" is allowed. If not, sorry, I can change it ( ´＿｀) <- sad me
 #
-# OwO
+# COLLABORATION: I looked at reference stuff (like provided examples on github) but otherwise I was a lone wolf
+#
+# This was short like 30 mins, maybe 45 mins at max
