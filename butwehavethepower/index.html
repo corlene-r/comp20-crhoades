@@ -14,19 +14,33 @@
 <div id="lyrics"></div>
 
 <script>
-	var power = document.getElementById("butwehavethepower");
+	var video = document.getElementById("butwehavethepower");
 	var lyrics = document.getElementById("lyrics");
 
-	power.addEventListener("timeupdate", function() {
+	video.addEventListener("timeupdate", function() {
 
-		if(power.currentTime < 2) {
-			lyrics.innerHTML = "<p>whoag</p>";
+		if(video.currentTime > 5 && video.currentTime < 10) {
+			lyrics.innerHTML = "<p>LISA:</p><p>Come gather round&comma; children&comma;</p><p>It&apos;s high time ye learned</p>";
 		}
-		else if(power.currentTime > 2 && video.currentTime < 4) {
-			lyrics.innerHTML = "<p>whoag 2</p>";
+		else if(video.currentTime > 10 && video.currentTime < 16) {
+			lyrics.innerHTML = "<p>&apos;Bout a hero named Homer</p><p>And a devil named Burns&period;</p>";
 		}
-		else if(power.currentTime > 4){
-			lyrics.innerHTML = "<p>whoag 3</p>";
+		else if(video.currentTime > 16 && video.currentTime < 21){
+			lyrics.innerHTML = "<p>We&apos;ll march &apos;till we drop </p><p>The girls and the fellas&period;</p>";
+		}
+		else if(video.currentTime > 21 && video.currentTime < 27){
+			lyrics.innerHTML = "<p>We&apos;ll fight &apos;till the death</p><p>Or else fold like umbrellas&period;</p>";
+		}
+		else if((video.currentTime > 38 && video.currentTime < 42) || (video.currentTime > 72 && video.currentTime < 77) || (video.currentTime > 82.5 && video.currentTime < 86)){
+			lyrics.innerHTML = "<h2>So we&apos;ll march day and night</h2> <h2> By the big cooling tower&period;</h2>";
+		}
+		else if((video.currentTime > 42 && video.currentTime < 52) || (video.currentTime > 77 && video.currentTime < 82.5) || (video.currentTime > 86 && video.currentTime < 91))
+			lyrics.innerHTML = "<h2>They have the plant</h2><h2>But we have the power&period;</h2>";
+		else if(video.currentTime > 52 && video.currentTime < 54){
+			lyrics.innerHTML = "<p>LENNY:</p><p>Now do &quot;Classical Gas!&quot;</p>";
+		}
+		else{
+			lyrics.innerHTML = "";
 		}
 	}, false);
 
