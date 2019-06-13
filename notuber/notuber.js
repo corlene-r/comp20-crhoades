@@ -1,16 +1,36 @@
-function initMap()
-{
-	var map_center = new google.maps.LatLng(42.352271, -71.05524200000001);
-
+var user;
+var map;
+var map_center = new google.maps.LatLng(42.352271, -71.05524200000001);
+var car_pic = 'car.png';
 	var myOptions = {
-		zoom: 14, 
+		zoom: 13, 
 		center: map_center,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-				
-	var map = new google.maps.Map(document.getElementById("map"), myOptions);
-	
-	var car_pic = 'car.png'
+var infowindow = new google.maps.InfoWindow();
+
+function initMap() {
+	map = new google.maps.Map(document.getElementById("map"), myOptions);
+	getMyLocation();
+}
+
+function getMyLocation() {
+	if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+			navigator.geolocation.getCurrentPosition(function(position) {
+				user = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				renderMap();
+			});
+		}
+		else {
+			alert("No geolocation. This won't work :/");
+		}
+}
+
+
+function renderMap() {
+	var user_pos = new google.maps.Marker({
+		map: map, title: 'you!', position: user
+	})
 	var car1 = new google.maps.Marker({
 		map: map, title: 'mXfkjrFw', position: {lat: 42.3453, lng: -71.0464},icon: car_pic
 	});
@@ -30,5 +50,9 @@ function initMap()
 		map: map, title: 'VMerzMH8', position: {lat: 42.3542, lng: -71.0704}, icon: car_pic
 	});
 
-	var infowindow = new google.maps.InfoWindow();
+	google.maps.event.addListener(user_pos, 'click', function() {
+		infowindow.setContent(user_pos.title);
+		infowindow.open(map, user_pos);
+	});
+
 }
