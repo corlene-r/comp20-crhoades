@@ -1,3 +1,5 @@
+// NOTE: USERNAME IS "Zw82DPZU"
+
 var user;
 var map;
 var map_center = new google.maps.LatLng(42.352271, -71.05524200000001);
