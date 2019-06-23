@@ -1,7 +1,9 @@
 // NOTE: USERNAME IS "Zw82DPZU"
 
-var user;
+var user; var user_lat; var user_lng;
+var username = "Zw82DPZU";
 var map;
+var cars; var closest_car;
 var map_center = new google.maps.LatLng(42.352271, -71.05524200000001);
 var car_pic = 'car.png';
 	var myOptions = {
@@ -19,7 +21,8 @@ function initMap() {
 function getMyLocation() {
 	if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
 			navigator.geolocation.getCurrentPosition(function(position) {
-				user = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				user_lat = position.coords.latitude; user_lng = position.coords.longitude;
+				user = new google.maps.LatLng(user_lat, user_lng);
 				renderMap();
 			});
 		}
@@ -32,29 +35,63 @@ function getMyLocation() {
 function renderMap() {
 	var user_pos = new google.maps.Marker({
 		map: map, title: 'you!', position: user
-	})
-	var car1 = new google.maps.Marker({
-		map: map, title: 'mXfkjrFw', position: {lat: 42.3453, lng: -71.0464},icon: car_pic
-	});
-	var car2 = new google.maps.Marker({
-		map: map, title: 'nZXB8ZHz', position: {lat: 42.3662, lng: -71.0621}, icon: car_pic
-	});
-	var car3 = new google.maps.Marker({
-		map: map, title: 'Tkwu74WC', position: {lat: 42.3603, lng: -71.0547}, icon: car_pic
-	});
-	var car4 = new google.maps.Marker({
-		map: map, title: '5KWpnAJN', position: {lat: 42.3472, lng: -71.0802}, icon: car_pic
-	});
-	var car5 = new google.maps.Marker({
-		map: map, title: 'uf5ZrXYw', position: {lat: 42.3663, lng: -71.0544}, icon: car_pic
-	});
-	var car6 = new google.maps.Marker({
-		map: map, title: 'VMerzMH8', position: {lat: 42.3542, lng: -71.0704}, icon: car_pic
 	});
 
+	initCars();
+
+	findClosestCar();
+
+	var path = [ ];
+	path.push(user); path.push(new google.maps.LatLng(cars[closest_car].lat, cars[closest_car].lng))
+
+	var woowooline = new google.maps.Polyline({
+		map: map, 
+		path: path, 
+		strokeColer: '#000080', 
+		strokeOpacity: 0.065, 
+		strokeWeight: 1
+	})
+
 	google.maps.event.addListener(user_pos, 'click', function() {
-		infowindow.setContent(user_pos.title);
+		infowindow.setContent("Closest Vehicle: " + cars[closest_car.car].username + "; Distance: " + closest_car.distance + "miles");
 		infowindow.open(map, user_pos);
 	});
 
+}
+
+function initCars() {
+	var request = new XMLHttpRequest();
+
+	var params = "username=IZ1sLGwg&lat=" + user_lat + "&lng=" + user_lng;
+
+	request.open("POST", "https://hans-moleman.herokuapp.com/rides" + params, true)
+
+	request.onreadystatechange = function() {
+		if (request.readyState == 4 && request.status == 200) {
+			console.log("Got the data back!");
+			data = request.responseText;
+			console.log(data);
+			cars = JSON.parse(data);
+		}
+		else if (request.readyState == 4 && request.status != 200) {
+			// think 404 or 500
+			document.getElementById("location").innerHTML = "<p>Whoops, something went terribly wrongo</p>";
+		}
+		else {
+			console.log("In progress...");
+		}
+	};
+
+}
+
+function findClosestCar() {
+	var car_latlng;
+	closest_car.distance = Number.MAX_SAFE_INTEGER; var aux_distance;
+	while(cars[i]){
+		car_latlng = new google.maps.LatLng(cars[i].lat, cars[i].lng);
+		aux_distance = google.maps.geometry.spherical.computeDistanceBetween(user, car_latlng);
+		if(aux_distance < distance){
+			closest_car.car = i; closest_car.distance = aux_distance;
+		}
+	}
 }
