@@ -35,22 +35,19 @@ function renderMap() {
 			request.send("username=Zw82DPZU&lat=" + user_lat + "&lng=" + user_lng);
 
 			request.onreadystatechange = function() {
-				console.log("initting cars");
 				if (request.status == 200 && request.readyState == 4) {
-					console.log(request.responseText); // DELETE LATER HGVKJHDBAOJGKDJXBALGJFBGLJFDABZLJKGNFALJFGDJFABN
 					cars = JSON.parse(request.responseText);
 					dispCars();
 					var path = [ ];
 					path.push(user); path.push(new google.maps.LatLng(closest_car['car']['lat'], closest_car['car']['lng'])) ;
 
-					console.log("making polyline");
 					var line = new google.maps.Polyline({
 						map: map, path: path, 
 						strokeColer: '#203e6e', strokeOpacity: 0.65, strokeWeight: 2
 					})
 
-					google.maps.event.addListener(user_pos, 'click', function() {
-						infowindow.setContent("Closest Vehicle: " + cars[closest_car['car']]['username'] + "; Distance: " + closest_car['distance'] + "miles");
+					google.maps.event.addListener(user_pos, "click", function() {
+						infowindow.setContent("Closest Vehicle: " + closest_car['car']['username'] + "; Distance: " + closest_car['distance'] + "miles");
 						infowindow.open(map, user_pos);
 					});
 				}
