@@ -30,12 +30,13 @@ function renderMap() {
 
 
 			var request = new XMLHttpRequest();
-			request.open("POST", "https://hans-moleman.herokuapp.com/rides");
+			request.open("POST", "https://limitless-falls-33784.herokuapp.com/rides");
 			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			request.send("username=Zw82DPZU&lat=" + user_lat + "&lng=" + user_lng);
 
 			request.onreadystatechange = function() {
 				if (request.status == 200 && request.readyState == 4) {
+					console.log(request.responseText); // DELETE LATER AJGD;AFJNGLJKDFN
 					cars = JSON.parse(request.responseText);
 					dispCars();
 					var path = [ ];
