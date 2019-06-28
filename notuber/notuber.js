@@ -36,7 +36,6 @@ function renderMap() {
 
 			request.onreadystatechange = function() {
 				if (request.status == 200 && request.readyState == 4) {
-					console.log(request.responseText); // DELETE LATER AJGD;AFJNGLJKDFN
 					cars = JSON.parse(request.responseText);
 					dispCars();
 					var path = [ ];
