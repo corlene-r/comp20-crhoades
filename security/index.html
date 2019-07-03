@@ -1,1 +1,43 @@
-Text here in the document
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta name="hewwo uwu" content="initial-scale=1.0"/>
+	<title>im an evil hacker &gt;&colon;&lpar;</title>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<script src="./hack.js"></script>
+</head>
+
+<body>
+
+	<h1>Introduction</h1>
+		<p>hello</p>
+
+	<h1>Methodology</h1>
+		<p>I started by analyzing the server using OWASP ZAP (link: <a href="https://github.com/zaproxy/zaprox")>https&colon;&sol;&sol;github.com&sol;zaproxy&sol;zaproxy</a>. This gave me an overview of some vulnerabilities to look into.</p>
+		<p>After this, I started to do a few tests with some urls</p>
+
+	<h1>Findings: Abstract</h1>
+		<p>hello</p>
+
+	<h1>Issues Found</h1>
+		<h2>Issue 1: Text Insertion with &quot;&sol;rides&quot;</h2>
+			<p>If we use the &quot;&sol;rides&quot; extension of https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&comma; we can insert many different things as a username. I used this to insert a &quot;click me&quot;&comma; which redirected to a different page when the user clicked it&comma; which could be used by malicious individuals to redirect users to dangerous websides. The terminal line I used was&colon; 
+			</p>
+			<p id="code">	curl &hyphen;&hyphen;data &quot;username&equals;&lt;h1&gt;&lt;a href&equals;&apos;https&colon;&sol;&sol;www.youtube.com&sol;watch&quest;v&equals;DLzxrzFCyOs&apos;&gt;CLICK ME&lt;&sol;a&gt;&lt;&sol;h1&gt;&amp;lat&equals;80&amp;lng&equals;80&quot; https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;rides</p>
+			<p>This could also be abused to add malicious code&comma; such as with this terminal line&colon; </p>
+			<p id="code">curl &hyphen;&hyphen;data &quot;username&eq;&lt;script&gt;alert&lpar;&apos;ohno&apos;&rpar;&semi;&lt;&sol;script&gt;&amp;lat&equals;80&amp;lng&equals;80&quot; https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;rides</p>
+		<h2>Issue 2</h2>
+			<p>hi</p>
+			<div id="issue1"></div>
+		<h2>Issue 3</h2>
+			<p>hi</p>
+			<div id="issue1"></div>
+
+	<h1>Conclusion</h1>
+		<p>hello</p>
+
+</body>
+
+</html>
