@@ -3,23 +3,22 @@
 <html>
 
 <head>
-	<meta name="hewwo uwu" content="initial-scale=1.0"/>
-	<title>im an evil hacker &gt;&colon;&lpar;</title>
+	<meta name="viewport" content="initial-scale=1.0"/>
+	<title>Hacking https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com</title>
 	<link rel="stylesheet" href="style.css" type="text/css"/>
-	<script src="./hack.js"></script>
 </head>
 
 <body>
 
 	<h1>Introduction</h1>
-		<p>hello</p>
+		<p>This product is a (fake) ride-lift service app, that has vehicles and passengers that can make requests. In this report, I will try hacking this app and showing many potential security vulnerabilities it has.</p>
 
 	<h1>Methodology</h1>
 		<p>I started by analyzing the server using OWASP ZAP (link: <a href="https://github.com/zaproxy/zaprox")>https&colon;&sol;&sol;github.com&sol;zaproxy&sol;zaproxy</a>. This gave me an overview of some vulnerabilities to look into.</p>
-		<p>After this, I started to do a few tests with some urls</p>
+		<p>After this, I started to do a few manual tests looking at the source code. I started with text insertion using the &quot;&sol;rides&quot; extension, then attempted NoSQL injection using the &quot;&sol;passengers.json&quot; and &quot;&sol;vehicle.json&quot; extensions.</p>
 
 	<h1>Findings: Abstract</h1>
-		<p>hello</p>
+		<p>There were some extreme issues with injection in the &quot;&sol;rides&quot; extension, where malicious code could potentially be inserted. Additionally, using NoSQL injection of [$ne] at &quot;&sol;vehicle.json&quot; and &quot;&sol;passenger.json&quot; can output the whole list of vehicles and passengers.</p>
 
 	<h1>Issues Found</h1>
 		<h2>Issue 1: Text Insertion with &quot;&sol;rides&quot;</h2>
@@ -28,15 +27,19 @@
 			<p id="code">	curl &hyphen;&hyphen;data &quot;username&equals;&lt;h1&gt;&lt;a href&equals;&apos;https&colon;&sol;&sol;www.youtube.com&sol;watch&quest;v&equals;DLzxrzFCyOs&apos;&gt;CLICK ME&lt;&sol;a&gt;&lt;&sol;h1&gt;&amp;lat&equals;80&amp;lng&equals;80&quot; https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;rides</p>
 			<p>This could also be abused to add malicious code&comma; such as with this terminal line&colon; </p>
 			<p id="code">curl &hyphen;&hyphen;data &quot;username&eq;&lt;script&gt;alert&lpar;&apos;ohno&apos;&rpar;&semi;&lt;&sol;script&gt;&amp;lat&equals;80&amp;lng&equals;80&quot; https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;rides</p>
-		<h2>Issue 2</h2>
-			<p>hi</p>
+		<h2>Issue 2: Can Read All Vehicles at &quot;&sol;vehicle.json&quot;</h2>
+			<p>Typing this web address&colon; </p>
+			<p id="code">https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;vehicle.json&quest;username&lsqb;&dollar;ne&rsqb;&equals;somerandoname</p>
+			<p>Into your browser &rpar;replacing &apos;somerandoname&apos; with any text imaginable&lpar; gives a list of all vehicles stored in the database, except for those with the name &apos;somerandoname&apos;. We can then simply find all vehicles with the name &apos;somerandoname&apos; removing the &apos;&lsqb;&dollar;ne&rsqb;&apos; and typing&colon;</p>
+			<p id="code">https&colon;&sol;&sol;hans&hyphen;moleman.herokuapp.com&sol;vehicle.json&quest;username&equals;somerandoname</p>
+			<p>This poses a risk to all vehicles stored in the database, since knowledge of usernames allows hackers information about vehicle names, which could then potentilly be used in the &apos;&sol;update&apos; function and update the vehicles unexpectedly</p>
 			<div id="issue1"></div>
-		<h2>Issue 3</h2>
+		<h2>Issue 3: Can Read All Passengers</h2>
 			<p>hi</p>
 			<div id="issue1"></div>
 
 	<h1>Conclusion</h1>
-		<p>hello</p>
+		<p>Don't release this app. It's like suuuuuper bad &colon;&lpar;</p>
 
 </body>
 
